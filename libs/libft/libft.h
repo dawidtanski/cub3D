@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:35:09 by dtanski           #+#    #+#             */
-/*   Updated: 2025/02/12 11:49:47 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/04/21 13:00:09 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <errno.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 30
 # endif
 
 typedef struct s_list
@@ -91,6 +92,7 @@ int					print_hex(unsigned long int ap, int imput);
 int					print_number(int number);
 int					print_unsigned(unsigned int number);
 int					print_pointer(void *ptr);
+void				err_exit(const char *err_message);
 
 // Doubly linked list
 void				ft_dlstadd_after_another(t_dlist *node, t_dlist *node_to_insert);

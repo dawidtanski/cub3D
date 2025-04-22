@@ -6,7 +6,7 @@
 #    By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 10:26:52 by dtanski           #+#    #+#              #
-#    Updated: 2025/04/20 12:27:43 by dtanski          ###   ########.fr        #
+#    Updated: 2025/04/20 21:27:41 by dtanski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,13 @@ CFLAGS = -Wall -Wextra -Werror -g $(DEPFLAGS)
 INC			=	-I ./inc -I $(LIBFT_DIR) -I $(MLX_DIR)
 LIB			=	-L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx_Linux -lX11 -lXext -lm -lz -lbsd
 
-SRC			= 	$(wildcard $(SRC_DIR)/*.c)
+SRC			= 		srcs/main.c					\
+					srcs/events/event_handling.c \
+					srcs/events/player_move.c	\
+					srcs/utils.c				\
 
-OBJ			=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
+
+OBJ			=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 #TEXT COLORSS
 GREEN		=	\033[0;32m
@@ -45,8 +49,9 @@ $(NAME):$(LIBFT) $(OBJ)
 		@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIB) -o $@
 		@echo "$(GREEN)[ OK ]$(RESET) $(YELLOW)Mandatory Ready!$(RESET)"
 
-$(OBJ): $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
-		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 $(MLX):
 		@echo "$(RED)[ .. ] | Compiling minilibx..$(RESET)"
