@@ -16,6 +16,7 @@ ft_strcmp.c ft_strisspace.c ft_isspace.c \
 print_unsigned.c print_pointer.c get_next_line.c \
 get_next_line_utils.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 ft_lstdelone.c \
+err_exit.c	\
 
 all: $(NAME)
 

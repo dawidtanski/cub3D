@@ -1,5 +1,6 @@
-cub3D: srcs/utils.c /usr/include/stdc-predef.h srcs/../inc/cub3D.h \
- srcs/../inc/../libs/libft/libft.h \
+objs/events/player_move.o: srcs/events/player_move.c \
+ /usr/include/stdc-predef.h srcs/events/../../inc/cub3D.h \
+ srcs/events/../../inc/../libs/libft/libft.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -57,28 +58,28 @@ cub3D: srcs/utils.c /usr/include/stdc-predef.h srcs/../inc/cub3D.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- srcs/../inc/./key_alias.h libs/minilibx-linux/mlx.h /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h /usr/include/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ srcs/events/../../inc/./key_alias.h libs/minilibx-linux/mlx.h \
+ /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h
 /usr/include/stdc-predef.h:
-srcs/../inc/cub3D.h:
-srcs/../inc/../libs/libft/libft.h:
+srcs/events/../../inc/cub3D.h:
+srcs/events/../../inc/../libs/libft/libft.h:
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
 /usr/include/stdint.h:
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
@@ -146,16 +147,6 @@ srcs/../inc/../libs/libft/libft.h:
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 /usr/include/asm-generic/errno.h:
 /usr/include/asm-generic/errno-base.h:
-srcs/../inc/./key_alias.h:
-libs/minilibx-linux/mlx.h:
-/usr/include/math.h:
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 /usr/include/stdio.h:
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
@@ -165,6 +156,16 @@ libs/minilibx-linux/mlx.h:
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+srcs/events/../../inc/./key_alias.h:
+libs/minilibx-linux/mlx.h:
+/usr/include/math.h:
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 /usr/include/string.h:
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:

@@ -1,5 +1,5 @@
-cub3D: srcs/utils.c /usr/include/stdc-predef.h srcs/../inc/cub3D.h \
- srcs/../inc/../libs/libft/libft.h \
+objs/event_handling.o: srcs/event_handling.c /usr/include/stdc-predef.h \
+ srcs/../inc/cub3D.h srcs/../inc/../libs/libft/libft.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

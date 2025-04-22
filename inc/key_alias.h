@@ -6,20 +6,20 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 17:54:50 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/21 07:16:58 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/04/22 13:51:04 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Keycodes for MLX
-#define KEY_ESC			53
-#define KEY_W			13
-#define KEY_A			0
-#define KEY_S			1
-#define KEY_D			2
-#define KEY_ARROW_UP	126
-#define KEY_ARROW_DOWN	125
-#define KEY_ARROW_LEFT	123
-#define KEY_ARROW_RIGHT	124
+#define KEY_ESC			65307
+#define KEY_W			119
+#define KEY_A			97
+#define KEY_S			115
+#define KEY_D			100
+#define KEY_ARROW_UP	65362
+#define KEY_ARROW_DOWN	65364
+#define KEY_ARROW_LEFT	65361
+#define KEY_ARROW_RIGHT	65363
 
 // Hooking events
 enum {

@@ -6,7 +6,7 @@
 #    By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 10:26:52 by dtanski           #+#    #+#              #
-#    Updated: 2025/04/20 21:27:41 by dtanski          ###   ########.fr        #
+#    Updated: 2025/04/22 10:54:58 by dtanski          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,12 @@ CFLAGS = -Wall -Wextra -Werror -g $(DEPFLAGS)
 INC			=	-I ./inc -I $(LIBFT_DIR) -I $(MLX_DIR)
 LIB			=	-L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx_Linux -lX11 -lXext -lm -lz -lbsd
 
-SRC			= 		srcs/main.c					\
-					srcs/events/event_handling.c \
-					srcs/events/player_move.c	\
-					srcs/utils.c				\
+# SRC			= 		srcs/main.c					\
+# 					srcs/events/event_handling.c \
+# 					srcs/events/player_move.c	\
+# 					srcs/utils.c				\
+
+SRC = $(shell find $(SRC_DIR) -name "*.c")
 
 
 OBJ			=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
