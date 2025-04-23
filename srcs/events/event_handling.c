@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 17:51:41 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 16:11:15 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:58:30 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static void	move_player(t_player *player, int keycode)
 		close_game(player->game);
 }
 
-static int	handle_keypress(int	keycode, t_player	*player)
+static int	handle_keypress(int	keycode, t_game	*game)
 {
 	printf("Key pressed: %d\n", keycode);
 	if (keycode == KEY_W || keycode == KEY_S || keycode == KEY_A || keycode == KEY_D || keycode == KEY_ESC || keycode == KEY_ARROW_LEFT || keycode == KEY_ARROW_RIGHT)
-		move_player(player, keycode);
+		move_player(game->player, keycode);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 21:12:13 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 16:02:19 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/04/22 16:56:38 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // {
 // 	int	speed;
 // 	float	angle_speed;
-// 	float	cos_angle;
+// 	// float	cos_angle;
 // 	float	sin_angle;
 
 // 	speed = 3;
