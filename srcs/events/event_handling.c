@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 17:51:41 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 16:58:30 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/04/30 10:56:32 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,35 +30,45 @@ static void	move_player(t_player *player, int keycode)
 	float	angle_speed;
 	float	cos_angle;
 	float	sin_angle;
+	float	new_x;
+	float	new_y;
 
 	speed = 3;
 	angle_speed = 0.03;
 	cos_angle = cos(player->angle);
 	sin_angle = sin(player->angle);
+	new_x = player->x;
+	new_y = player->y;
 	if (keycode == KEY_ARROW_LEFT)
 		player->angle -= angle_speed;
 	if (keycode == KEY_ARROW_RIGHT)
 		player->angle += angle_speed;
 	if (keycode == KEY_W)
 	{
-		player->x += cos_angle * speed;
-		player->y += sin_angle * speed;
+		new_x += cos_angle * speed;
+		new_y += sin_angle * speed;
 	}
 	if (keycode == KEY_S)
 	{
-		player->x -= cos_angle * speed;
-		player->y -= sin_angle * speed;
+		new_x -= cos_angle * speed;
+		new_y -= sin_angle * speed;
 	}
 	if (keycode == KEY_A)
 	{
-		player->x += sin_angle * speed;
-		player->y -= cos_angle * speed;
+		new_x -= sin_angle * speed;
+		new_y += cos_angle * speed;
 	}
-	if (keycode == KEY_A)
+	if (keycode == KEY_D)
 	{
-		player->x -= sin_angle * speed;
-		player->y += cos_angle * speed;
+		new_x += sin_angle * speed;
+		new_y -= cos_angle * speed;
 	}
+	if (!is_wall(new_x, new_y, player->game))
+    {
+        player->x = new_x; // Aktualizuj pozycję gracza tylko, jeśli nie ma kolizji
+        player->y = new_y;
+    }
+	
 	if (keycode == KEY_ESC)
 		close_game(player->game);
 }
@@ -71,21 +81,6 @@ static int	handle_keypress(int	keycode, t_game	*game)
 	return (0);
 }
 
-/*	if (keycode == KEY_W)
-		go_up(game);
-	else if (keycode == KEY_S)
-		go_down(game);
-	else if (keycode == KEY_A)
-		go_left(game);
-	else if (keycode == KEY_D)
-		go_right(game);
-	else if (keycode == KEY_ESC)
-		close_game(game);
-	else if (keycode == KEY_ARROW_LEFT)
-		turn_left(game);
-	else if (keycode == KEY_ARROW_RIGHT)
-		turn_right(game);
-	return (0);*/
 
 // void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
 void	setup_hooks(t_game *game)
@@ -94,5 +89,22 @@ void	setup_hooks(t_game *game)
 	mlx_hook(game->mlx_window, ON_DESTROY, 0, handle_keypress, game);
 }
 
+int	touch(float px, float py, t_game *game)
+{
+	int	x;
+	int	y;
 
+	x = px / BLOCK;
+	y = py / BLOCK;
+	// printf("Checking touch at x: %d, y: %d\n", x, y);
+
+    // if (x < 0 || y < 0 || y >= map_height(game->map_buffer) || x >= map_width(game->map_buffer))
+    // {
+    //     printf("Out of bounds: x: %d, y: %d\n", x, y);
+    //     return (1);
+    // }
+	if (game->map_buffer[y][x] == '1')
+		return (1);
+	return (0);
+}
 

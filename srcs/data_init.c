@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 22:14:04 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 16:50:12 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/01 11:11:23 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,5 @@ void	data_init(char *map_path, t_game *game)
 	game->map_buffer = get_map();
 	mlx_put_image_to_window(game->mlx_connection, game->mlx_window, game->img_data->img, 0, 0);
 	game->player->game = game;
+
 }
