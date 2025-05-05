@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/01 11:15:10 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:33:24 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ static int	game_loop(t_game *game)
 	return (0);
 }
 
+// We're doing few things here:
+// - File verification. 
+// - If the file is ok, we can parse the data to work on them later.
+// - Then we're reading the file and saving data in proper struct.
+// - Map validation.
+// - Textures valisation.
+// - Player initializaition.
+static int	parse_args(t_game *game, char *argv[])
+{
+	if (check_file(argv[1], true) == FAILURE)//////
+		ft_exit(game, FAILURE);////////
+}
+
 int	main(int argc, char *argv[])
 {
 	t_game	*game;
@@ -54,6 +67,8 @@ int	main(int argc, char *argv[])
 	if (!game)
 		err_exit("Failed to allocate memory for game");
 	data_init(argv[1], game);
+	if (parse_args(&game, argv) != 0)//tutaj dodaję początek parsowania i sprawdzania mapy.
+		return (1);
 	// if (!map_is_valid(game->map_buffer))
 	// {
 	// 	perror("Wrong map");

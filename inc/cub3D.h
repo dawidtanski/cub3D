@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/01 11:36:57 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/05 22:50:11 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,35 @@
 # include "./key_alias.h"
 # include <mlx.h>
 # include <math.h>
-# include <fcntl.h>	
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdbool.h>//////Czy na pewno możemy? Zdaje się, że tak bo false / true często już używaliśmy w naszych projektach.
+
+//Error messages!!!!!!!!!!!!!!!!!!!!!!!
+
+//Helper values definitions (for parser) - enums
+
+enum e_parse_summary
+{
+	SUCCESS = 0,
+	FAILURE = 1,
+	ERROR = 2,
+	STOP = 3,
+	CONTINUE = 4
+};
+
+enum e_textures_direction
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
+
+//Structures
 
 typedef struct s_game t_game;
 
@@ -89,5 +113,10 @@ void	draw_map(t_game *game);
 
 // Cleaning an image
 void	clear_image(t_game *game);
+
+//Parsing
+////error_handling.c
+int	err_msg(char *input, char *str, int err_code);
+int	err_msg_rgb_val(int input, char *str, int err_code);
 
 #endif
