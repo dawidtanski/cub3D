@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/05 22:50:11 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/06 19:09:25 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@
 # include <string.h>
 # include <stdbool.h>//////Czy na pewno możemy? Zdaje się, że tak bo false / true często już używaliśmy w naszych projektach.
 
-//Error messages!!!!!!!!!!!!!!!!!!!!!!!
+//Error messages
+# define ERR_FILE_IS_DIR "Is a directory. Please input a valid file name."
+# define ERR_FILE_NOT_CUB "Is not a .cub file."
+# define ERR_FILE_NOT_XPM "Is not a .xpm file."
+
 
 //Helper values definitions (for parser) - enums
 
@@ -116,7 +120,12 @@ void	clear_image(t_game *game);
 
 //Parsing
 ////error_handling.c
-int	err_msg(char *input, char *str, int err_code);
-int	err_msg_rgb_val(int input, char *str, int err_code);
+int		err_msg(char *input, char *str, int err_code);
+int		err_msg_rgb_val(int input, char *str, int err_code);
+////check_args.c
+int		check_file(char *arg, bool cub);
+////exit.c
+void	ft_exit(t_game *game, int code);
+int		exit_game(t_game *game)
 
 #endif
