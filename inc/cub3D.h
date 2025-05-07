@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/06 19:09:25 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:32:02 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ERR_FILE_IS_DIR "Is a directory. Please input a valid file name."
 # define ERR_FILE_NOT_CUB "Is not a .cub file."
 # define ERR_FILE_NOT_XPM "Is not a .xpm file."
+# define ERR_MALLOC "Error: memory allocation failed."
 
 
 //Helper values definitions (for parser) - enums
@@ -84,6 +85,35 @@ typedef struct	s_img_data
 	int		endian;
 }				t_img_data;
 
+typedef struct s_map_info
+{
+	int			fd;
+	int			line_count;
+	char		*path;
+	char		**file;
+	int			height;
+	int			width;
+	int			index_end_of_map;
+}	t_map_info;
+
+typedef struct s_tex_info
+{
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				*floor;
+	int				*ceiling;
+	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
+	int				size;
+	int				index;
+	double			step;
+	double			pos;
+	int				x;
+	int				y;
+}	t_tex_info;
+
 struct s_game
 {
 	void		*mlx_connection;
@@ -91,8 +121,13 @@ struct s_game
 	t_img_data	*img_data;
 	t_player	*player;
 	char		**map_buffer;
-
+	int			**textures;
+	int			**texture_pxl;
+	t_tex_info	tex_info;
+	t_map_info	map_info;
+	char		**map;
 };
+
 // Filling a pixel with color
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 
@@ -124,8 +159,15 @@ int		err_msg(char *input, char *str, int err_code);
 int		err_msg_rgb_val(int input, char *str, int err_code);
 ////check_args.c
 int		check_file(char *arg, bool cub);
+////parse_data.c
+void	parse_data(char *path, t_game *game);
+
+//Exiting the game
 ////exit.c
 void	ft_exit(t_game *game, int code);
-int		exit_game(t_game *game)
+int		exit_game(t_game *game);
+////free_data.c
+void	free_tab(void **tab);
+int		free_data(t_game *game);
 
 #endif

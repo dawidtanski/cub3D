@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:23:55 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/06 18:53:46 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/07 21:02:35 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static bool	is_dir(char *arg)
 	return (out);
 }
 
+//Checking if given file is correct file type. 
 static bool is_corr_file_type(char *arg, char *f_type)
 {
 	size_t	len;

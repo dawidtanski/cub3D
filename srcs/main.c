@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/06 19:00:41 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/07 22:34:02 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ static int	game_loop(t_game *game)
 static int	parse_args(t_game *game, char *argv[])
 {
 	if (check_file(argv[1], true) == FAILURE)
-		ft_exit(game, FAILURE);////////
+		ft_exit(game, FAILURE);
+	parse_data(argv[1], game);
+	if (get_file_data(game, game->map_info.file) == FAILURE)////
+		return (free_data(game));
+
 }
 
 int	main(int argc, char *argv[])
