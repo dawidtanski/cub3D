@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/07 22:32:02 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/08 22:19:41 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define ERR_FILE_NOT_CUB "Is not a .cub file."
 # define ERR_FILE_NOT_XPM "Is not a .xpm file."
 # define ERR_MALLOC "Error: memory allocation failed."
+# define ERR_TEX_INVALID "Error: invalid textures."
+# define ERR_INVALID_MAP "Error: wrong map file, please check data format."
 
 
 //Helper values definitions (for parser) - enums
@@ -161,6 +163,8 @@ int		err_msg_rgb_val(int input, char *str, int err_code);
 int		check_file(char *arg, bool cub);
 ////parse_data.c
 void	parse_data(char *path, t_game *game);
+////get_file_data.c
+int		get_file_data(t_game *game, char **map);
 
 //Exiting the game
 ////exit.c
