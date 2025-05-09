@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 22:34:48 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/08 22:19:13 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:07:06 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ static int	get_map_info(t_game *game, char **map, int i, int j)
 		}
 		else
 		{
-			if (fill_color_textures(game, &game->tex_info, map[i], j) == ERROR)/////
+			if (get_textures_colors(game, &game->tex_info, map[i], j) == ERROR)
 				return (FAILURE);
 			return (STOP);
 		}
 	}
 	else if (ft_isdigit(map[i][j]))
 	{
-		if (create_map(game, map, i) == FAILURE)//////
+		if (create_map(game, map, i) == FAILURE)
 			return (err_msg(game->map_info.path, ERR_INVALID_MAP, FAILURE));
 		return (SUCCESS);
 	}

@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/08 22:19:41 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:05:34 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # define ERR_MALLOC "Error: memory allocation failed."
 # define ERR_TEX_INVALID "Error: invalid textures."
 # define ERR_INVALID_MAP "Error: wrong map file, please check data format."
+# define ERR_FLOOR_CEILING "Error: wrong RGB values for floor or ceiling colors"
+# define ERR_COLOR_CEILING "Error: wrong RGB values for ceiling color"
+# define ERR_COLOR_FLOOR "Error: wrong RGB values for floor color"
 
 
 //Helper values definitions (for parser) - enums
@@ -165,6 +168,13 @@ int		check_file(char *arg, bool cub);
 void	parse_data(char *path, t_game *game);
 ////get_file_data.c
 int		get_file_data(t_game *game, char **map);
+////get_textures_color.c
+int		get_textures_color(t_game *game, t_tex_info *textures, char *line, int i);
+////create_map.c
+int		create_map(t_game *game, char **file, int i);
+////parsing_utils.c
+size_t	find_len(t_map_info *map, int i);
+bool	to_skip(char c);
 
 //Exiting the game
 ////exit.c
