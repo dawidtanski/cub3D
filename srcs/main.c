@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/09 22:08:31 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/13 21:07:40 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static int	parse_args(t_game *game, char *argv[])
 	parse_data(argv[1], game);
 	if (get_file_data(game, game->map_info.file) == FAILURE)
 		return (free_data(game));
-	CO DALEJ?
+	if (chck_map(game, game->map) == FAILURE)/////
+		return (free_data(game));
 }
 
 int	main(int argc, char *argv[])

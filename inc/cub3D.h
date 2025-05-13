@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/09 22:05:34 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/13 22:44:25 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@
 # define ERR_FLOOR_CEILING "Error: wrong RGB values for floor or ceiling colors"
 # define ERR_COLOR_CEILING "Error: wrong RGB values for ceiling color"
 # define ERR_COLOR_FLOOR "Error: wrong RGB values for floor color"
+# define ERR_MAP_MISSING "Error: map is missing. Please provide valid map file."
+# define ERR_MAP_WALLS "Error: map walls are missing. Please check your map file."
+# define ERR_MAP_ORDER "Error: map shluld be last in your map file."
+# define ERR_MAP_SIZE "Error: map is too small."
+# define ERR_INV_LETTER "Error: invalid letter in map file."
+# define ERR_NUM_PLAYER "Error: you can have only one player on the map."
 
 
 //Helper values definitions (for parser) - enums
@@ -78,6 +84,7 @@ typedef struct	s_player
 	float	x;
 	float	y;
 	float	angle;
+	char	dir;
 	t_game	*game;
 }				t_player;
 
@@ -124,7 +131,7 @@ struct s_game
 	void		*mlx_connection;
 	void		*mlx_window;
 	t_img_data	*img_data;
-	t_player	*player;
+	t_player	player;//////tutaj wywaliłem pointer bo mi waliło błędem w check_map.c - chck_map_el,
 	char		**map_buffer;
 	int			**textures;
 	int			**texture_pxl;
@@ -175,6 +182,8 @@ int		create_map(t_game *game, char **file, int i);
 ////parsing_utils.c
 size_t	find_len(t_map_info *map, int i);
 bool	to_skip(char c);
+////check_map_utils.c
+int		chck_map_sides(t_map_info *map, char **map_tab);
 
 //Exiting the game
 ////exit.c
