@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:32:02 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/09 21:56:10 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:23:32 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ bool	to_skip(char c)
 		return (true);
 	else
 		return (false);
+}
+
+//Check if character is a white space.
+int	is_a_white_spc(char c)
+{
+	if (c != 32 && c != 9 && c != 13 && c != 10
+		&& c != 11 && c != 12)
+		return (FAILURE);
+	else
+		return (SUCCESS);
 }
 
 //Looking for a biggest value of map length.

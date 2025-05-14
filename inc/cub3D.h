@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/13 22:44:25 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:14:04 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@
 # define ERR_MAP_SIZE "Error: map is too small."
 # define ERR_INV_LETTER "Error: invalid letter in map file."
 # define ERR_NUM_PLAYER "Error: you can have only one player on the map."
+# define ERR_PLAYER_DIR "Error: can't find player poition. Needs N, S, E or W chars."
+# define ERR_PLAYER_POS "Error: wrong player position."
+# define ERR_TEX_MISSING "Error: some textures are missing."
+# define ERR_COLOR_MISSING "Error: flor or ceiling color is missing."
+# define ERR_TEX_RGB_VAL "Error: invalid RGB value. Should be from 0 to 255."
 
 
 //Helper values definitions (for parser) - enums
@@ -165,10 +170,11 @@ void	draw_map(t_game *game);
 // Cleaning an image
 void	clear_image(t_game *game);
 
-//Parsing
-////error_handling.c
+//error_handling.c
 int		err_msg(char *input, char *str, int err_code);
 int		err_msg_rgb_val(int input, char *str, int err_code);
+
+//Parsing
 ////check_args.c
 int		check_file(char *arg, bool cub);
 ////parse_data.c
@@ -182,8 +188,13 @@ int		create_map(t_game *game, char **file, int i);
 ////parsing_utils.c
 size_t	find_len(t_map_info *map, int i);
 bool	to_skip(char c);
+int		is_a_white_spc(char c);
 ////check_map_utils.c
 int		chck_map_sides(t_map_info *map, char **map_tab);
+////check_map.c
+int		chck_map(t_game *game, char **map_tab);
+////check_textures.c
+int		val_textures(t_game *game, t_tex_info *textures);
 
 //Exiting the game
 ////exit.c

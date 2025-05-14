@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 21:10:22 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/13 22:44:16 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:36:03 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,58 @@ static int	chck_map_elem(t_game *game, char **map_tab)
 	return (SUCCESS);
 }
 
+//Check player position - takes player coordinates.
+//Check player surrounding. First - length of upper
+//and lower lines. Then checking if top, bottom, left and right
+//surrounding tabs, are whitespaces.
+static int	val_player_pos(t_game *game, char **map_tab)
+{
+	int	i;
+	int	j;
+
+	i = (int)game->player.y;
+	j = (int)game->player.x;
+	if (ft_strlen(map_tab[i - 1]) < (size_t)j
+		|| ft_strlen(map_tab[i + 1]) < (size_t)j
+		|| is_a_white_spc(map_tab[i][j - 1]) == SUCCESS
+		|| is_a_white_spc(map_tab[i][j + 1]) == SUCCESS
+		|| is_a_white_spc(map_tab[i - 1][j]) == SUCCESS
+		|| is_a_white_spc(map_tab[i + 1][j]) == SUCCESS)
+		return (FAILURE);
+	return (SUCCESS);	
+}
+
+//Iterates thru whole map to check find player position.
+//If finds "NSEW" - sets player position here.
+//Last thing - verify player surroundings.
+static int	chck_player_pos(t_game *game, char **map_tab)
+{
+	int	i;
+	int	j;
+
+	if (game->player.dir == '0')
+		return (err_msg(game->map_info.path, ERR_PLAYER_DIR, FAILURE));
+	i = 0;
+	while (map_tab[i])
+	{
+		j = 0;
+		while (map_tab[i][j])
+		{
+			if (ft_strchr("NSEW", map_tab[i][j]))
+			{
+				game->player.x = (float)j + 0.5;
+				game->player.y = (float)i + 0.5;
+				map_tab[i][j] = '0';
+			}
+			j++;
+		}
+		i++;
+	}
+	if (val_player_pos(game, map_tab) == FAILURE)
+		return (err_msg(game->map_info.path, ERR_PLAYER_POS, FAILURE));
+	return (SUCCESS);
+}
+
 //Initializes whole process of map validation
 int	chck_map(t_game *game, char **map_tab)
 {
@@ -76,7 +128,7 @@ int	chck_map(t_game *game, char **map_tab)
 		return (err_msg(game->map_info.path, ERR_MAP_SIZE, FAILURE));
 	if (chck_map_elem(game, map_tab) == FAILURE)
 		return (FAILURE);
-	/////Check player position
-
+	if (chck_player_pos(game, map_tab) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

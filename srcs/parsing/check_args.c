@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:23:55 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/07 21:02:35 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:55:01 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,34 +68,3 @@ int	check_file(char *arg, bool cub)
 		return (err_msg(arg, ERR_FILE_NOT_XPM, FAILURE));
 	return (SUCCESS);
 }
-
-//Komentarz dla Dawida.
-// Sprawdź poproszę czy dobrze kombinuję. W przykładzie miałem sprawdzanie formatu plików tak:
-
-// static bool	is_cub_file(char *arg)
-// {
-// 	size_t	len;
-
-// 	len = ft_strlen(arg);
-// 	if ((arg[len - 3] != 'c' || arg[len - 2] != 'u'
-// 			|| arg[len - 1] != 'b'
-// 			|| arg[len - 4] != '.'))
-// 		return (false);
-// 	return (true);
-// }
-
-// static bool	is_xpm_file(char *arg)
-// {
-// 	size_t	len;
-
-// 	len = ft_strlen(arg);
-// 	if ((arg[len - 3] != 'x' || arg[len - 2] != 'p'
-// 			|| arg[len - 1] != 'm'
-// 			|| arg[len - 4] != '.'))
-// 		return (false);
-// 	return (true);
-// }
-
-// Czyli dwie oddzielne funkcje. A pomyślałem, że może da się to zrobić w jednej.
-// Oczywiście z dodatkowym parametrem żeby było wiadomo jaki typ pliku sprawdzamy.
-// Ta funkcja działa coś podobnie jak strncmp.
