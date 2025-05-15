@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/14 22:14:04 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:23:51 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ typedef struct	s_player
 	float	x;
 	float	y;
 	float	angle;
+	float	fov_x;
+	float	fov_y;
 	char	dir;
 	t_game	*game;
 }				t_player;
@@ -195,6 +197,8 @@ int		chck_map_sides(t_map_info *map, char **map_tab);
 int		chck_map(t_game *game, char **map_tab);
 ////check_textures.c
 int		val_textures(t_game *game, t_tex_info *textures);
+////set_player_dir.c
+void	set_player_dir(t_game *game);
 
 //Exiting the game
 ////exit.c

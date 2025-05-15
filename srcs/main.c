@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/14 22:18:54 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:24:51 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static int	parse_args(t_game *game, char *argv[])
 		return (free_data(game));
 	if (val_textures(game, &game->tex_info) == FAILURE)
 		return (free_data(game));
-	/////init player direction
+	set_player_dir(game);
+	return (0);
 }
 
 int	main(int argc, char *argv[])
