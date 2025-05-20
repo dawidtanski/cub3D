@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 21:10:22 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/14 21:36:03 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:22:00 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	chck_map_elem(t_game *game, char **map_tab)
 	int	j;
 
 	i = 0;
-	game->player.dir = '0';
+	game->player->dir = '0';
 	while (map_tab[i] != NULL)
 	{
 		j = 0;
@@ -52,10 +52,10 @@ static int	chck_map_elem(t_game *game, char **map_tab)
 				j++;
 			if (!(ft_strchr("10NSEW", map_tab[i][j])))
 				return (err_msg(game->map_info.path, ERR_INV_LETTER, FAILURE));
-			if (ft_strchr("NSEW", map_tab[i][j]) && game->player.dir != '0')
+			if (ft_strchr("NSEW", map_tab[i][j]) && game->player->dir != '0')
 				return (err_msg(game->map_info.path, ERR_NUM_PLAYER, FAILURE));
-			if (ft_strchr("NSEW", map_tab[i][j]) && game->player.dir == '0')
-				game->player.dir = map_tab[i][j];
+			if (ft_strchr("NSEW", map_tab[i][j]) && game->player->dir == '0')
+				game->player->dir = map_tab[i][j];
 			j++;
 		}
 		i++;
@@ -72,8 +72,8 @@ static int	val_player_pos(t_game *game, char **map_tab)
 	int	i;
 	int	j;
 
-	i = (int)game->player.y;
-	j = (int)game->player.x;
+	i = (int)game->player->y;
+	j = (int)game->player->x;
 	if (ft_strlen(map_tab[i - 1]) < (size_t)j
 		|| ft_strlen(map_tab[i + 1]) < (size_t)j
 		|| is_a_white_spc(map_tab[i][j - 1]) == SUCCESS
@@ -92,7 +92,7 @@ static int	chck_player_pos(t_game *game, char **map_tab)
 	int	i;
 	int	j;
 
-	if (game->player.dir == '0')
+	if (game->player->dir == '0')
 		return (err_msg(game->map_info.path, ERR_PLAYER_DIR, FAILURE));
 	i = 0;
 	while (map_tab[i])
@@ -102,8 +102,8 @@ static int	chck_player_pos(t_game *game, char **map_tab)
 		{
 			if (ft_strchr("NSEW", map_tab[i][j]))
 			{
-				game->player.x = (float)j + 0.5;
-				game->player.y = (float)i + 0.5;
+				game->player->x = (float)j + 0.5;
+				game->player->y = (float)i + 0.5;
 				map_tab[i][j] = '0';
 			}
 			j++;

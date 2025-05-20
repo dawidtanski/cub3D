@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/15 21:23:51 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:11:28 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ struct s_game
 	void		*mlx_connection;
 	void		*mlx_window;
 	t_img_data	*img_data;
-	t_player	player;//////tutaj wywaliłem pointer bo mi waliło błędem w check_map.c - chck_map_el,
+	t_player	*player;
 	char		**map_buffer;
 	int			**textures;
 	int			**texture_pxl;

@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:55:37 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/09 16:56:57 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:26:28 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool found_no_digit(char *str)
 
 //Covert string data to int values of R ,G and B.
 //Checking if coversion is valid - if is -1 or is no digit - fail.
-static int	get_rgb_arr(char **rgb_before, int *rgb_after)
+static int	*get_rgb_arr(char **rgb_before, int *rgb_after)
 {
 	int	i;
 
@@ -53,10 +53,10 @@ static int	get_rgb_arr(char **rgb_before, int *rgb_after)
 //Checking if we have exact 2 colors in the file 
 //(each value for R, G and B parameters).
 //Allocates memory for RGB array.
-static int	set_colors(char *line)
+static int	*set_colors(char *line)
 {
 	char	**rgb_before;
-	int		**rgb_after;
+	int		*rgb_after;
 	int		cnt;
 
 	rgb_before = ft_split(line, 44);

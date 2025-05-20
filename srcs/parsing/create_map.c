@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 21:07:10 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/09 22:05:07 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:18:53 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static int	cnt_map_lns(t_game *game, char **file, int i)
 //Finishes with NULL at the end.
 static int	get_map_tab(t_map_info *map_info, char **map_tab, int indx)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	map_info->width = find_len(map_info, indx);
 	i = 0;
@@ -56,7 +56,7 @@ static int	get_map_tab(t_map_info *map_info, char **map_tab, int indx)
 			return (err_msg(NULL, ERR_MALLOC, FAILURE));
 		while (map_info->file[indx][j] && map_info->file[indx][j] != '\n')
 		{
-			map_tab[i][j] == map_info->file[indx][j];
+			map_tab[i][j] = map_info->file[indx][j];
 			j++;
 		}
 		while (j < map_info->width)
@@ -86,8 +86,8 @@ static int	get_map_info(t_game *game, char **file, int i)
 //Skip whitespaces at the begining of map file.
 static void	spc_to_wall(t_game *game)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])

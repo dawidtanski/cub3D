@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:01:15 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/15 21:23:31 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:16:10 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ static void	set_we_dir(t_player *player)
 //First for north and south, and then for west and east.
 void	set_player_dir(t_game *game)
 {
-	set_ns_dir(&game->player);
-	set_we_dir(&game->player);
+	set_ns_dir(game->player);
+	set_we_dir(game->player);
 }

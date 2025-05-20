@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/15 21:24:51 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:14:39 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 	if (!game)
 		err_exit("Failed to allocate memory for game");
 	data_init(argv[1], game);
-	if (parse_args(&game, argv) != 0)//tutaj dodaję początek parsowania i sprawdzania mapy.
+	if (parse_args(game, argv) != 0)//tutaj dodaję początek parsowania i sprawdzania mapy.
 		return (1);
 	// if (!map_is_valid(game->map_buffer))
 	// {
