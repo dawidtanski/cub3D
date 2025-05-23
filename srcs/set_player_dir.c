@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   set_player_dir.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
+/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:01:15 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/20 21:16:10 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:23:42 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../inc/cub3D.h"
+#include "../inc/cub3D.h"
 
 //Check if player direction in player struct,
 //is nort ('N') or south ('S').

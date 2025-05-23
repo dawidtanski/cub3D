@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
+/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/20 21:11:28 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:14:25 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-# define CUB_3D_H
+# define CUB3D_H
 
 # define	WIDTH	1280
 # define	HEIGHT	720

@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 22:14:04 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/01 11:11:23 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/23 19:17:30 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,13 @@ void	data_init(char *map_path, t_game *game)
 	// For testing purposes
 	game->player = malloc(sizeof(t_player));
 	if (!game->player)
-	err_exit("Failed to allocate memory for game->player");
+		err_exit("Failed to allocate memory for game->player");
 	game->player->x = WIDTH / 2;
 	game->player->y = HEIGHT / 2;
 	game->player->angle = PI / 2;
+	game->player->fov_x = 0;
+	game->player->fov_y = 0;
+	game->player->dir = 0;
 
 	game->img_data = malloc(sizeof(t_img_data));
 	if (!game->img_data)
