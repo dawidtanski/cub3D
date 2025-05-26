@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/23 19:14:25 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/26 19:16:48 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define	PI		3.14159265359
 # define	DEBUG	1
 # define	BLOCK 64
+# define 	TEX_SIZE 64//chyba, ze to to samo co BLOCK?
 
 
 # include "../libs/libft/libft.h"
@@ -52,7 +53,7 @@
 # define ERR_TEX_MISSING "Error: some textures are missing."
 # define ERR_COLOR_MISSING "Error: flor or ceiling color is missing."
 # define ERR_TEX_RGB_VAL "Error: invalid RGB value. Should be from 0 to 255."
-
+# define ERR_MLX_IMG "Error: failed to initialize mlx image."
 
 //Helper values definitions (for parser) - enums
 
@@ -155,6 +156,9 @@ void	setup_hooks(t_game *game);
 
 // Initialize data
 void	data_init(char *map_path, t_game *game);
+void	init_textures(t_game *game);
+void	init_tex_info(t_tex_info *textures);
+void	init_clean_img(t_img_data *img);
 
 // Map utils
 int		is_wall(float x, float y, t_game *game);

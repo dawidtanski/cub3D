@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 22:34:48 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/20 21:29:17 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:30:48 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ static char	*get_textures_path(char *line, int i)
 
 //Looking for proper direction symbols ("NO", "SO", "WE", "EA")
 //and checking if after symbol we have proper line close.
-static int	get_textures_info(t_tex_info *textures, char *line, int i)
+static int	get_textures_info(t_tex_info *tex_info, char *line, int i)
 {
 	if (line[i + 2] && ft_isprint(line[i + 2]))
 		return (ERROR);
-	if (line[i] == 78 && line[i + 1] == 79 && !(textures->north))
-		textures->north = get_textures_path(line, i + 2);
-	else if (line[i] == 83 && line[i + 1] == 79 && !(textures->south))
-		textures->south = get_textures_path(line, i + 2);
-	else if (line[i] == 87 && line[i + 1] == 69 && !(textures->west))
-		textures->west = get_textures_path(line, i + 2);
-	else if (line[i] == 69 && line[i + 1] == 65 && !(textures->east))
-		textures->east = get_textures_path(line, i + 2);
+	if (line[i] == 78 && line[i + 1] == 79 && !(tex_info->north))
+		tex_info->north = get_textures_path(line, i + 2);
+	else if (line[i] == 83 && line[i + 1] == 79 && !(tex_info->south))
+		tex_info->south = get_textures_path(line, i + 2);
+	else if (line[i] == 87 && line[i + 1] == 69 && !(tex_info->west))
+		tex_info->west = get_textures_path(line, i + 2);
+	else if (line[i] == 69 && line[i + 1] == 65 && !(tex_info->east))
+		tex_info->east = get_textures_path(line, i + 2);
 	else
 		return (ERROR);
 	return (SUCCESS);
