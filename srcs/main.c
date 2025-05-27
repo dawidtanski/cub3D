@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/20 21:14:39 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:14:25 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ static int	game_loop(t_game *game)
 	player_coord = malloc(sizeof(t_point));
 	if (!player_coord)
 		return (1);
-	player_coord->x = game->player->x;
-	player_coord->y = game->player->y;
+	player_coord->x = game->player.x;
+	player_coord->y = game->player.y;
 	fraction = PI / 3 / WIDTH;
-	start_x = game->player->angle - PI / 6;
+	start_x = game->player.angle - PI / 6;
 	i = 0;
 	clear_image(game);
 	draw_square(player_coord, 10, 0x00FF00, game);
 	draw_map(game);
 	while (i < WIDTH)
 	{
-		draw_line(game->player, game, start_x, i);
+		draw_line(&game->player, game, start_x, i);
 		start_x += fraction;
 		i++;
 	}
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window, game->img_data->img, 0, 0);
+	mlx_put_image_to_window(game->mlx_connection, game->mlx_window, game->img_data.img, 0, 0);
 	return (0);
 }
 
@@ -76,8 +76,9 @@ int	main(int argc, char *argv[])
 	if (!game)
 		err_exit("Failed to allocate memory for game");
 	data_init(argv[1], game);
-	if (parse_args(game, argv) != 0)//tutaj dodaję początek parsowania i sprawdzania mapy.
+	if (parse_args(game, argv) != 0)
 		return (1);
+	init_textures(game);
 	// if (!map_is_valid(game->map_buffer))
 	// {
 	// 	perror("Wrong map");

@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 17:55:16 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/26 19:26:13 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:27:14 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	init_texture_img(t_game *game, t_img_data *image, char *path)
 {
 	init_clean_img(image);
-	image->img = mlx_xpm_file_to_image(game->mlx_connection, *path, 
+	image->img = mlx_xpm_file_to_image(game->mlx_connection, path, 
 			&game->tex_info.size, &game->tex_info.size);
 	if (image->img == NULL)
 		ft_exit(game, err_msg("mlx", ERR_MLX_IMG, 1));
@@ -59,7 +59,7 @@ void	init_textures(t_game *game)
 	game->textures = ft_calloc(5, sizeof * game->textures);
 	if (!game->textures)
 		ft_exit(game, err_msg(NULL, ERR_MALLOC, 1));
-	game->textures[NORTH] = xpm_to_img(game, game->tex_info.north);///////
+	game->textures[NORTH] = xpm_to_img(game, game->tex_info.north);
 	game->textures[SOUTH] = xpm_to_img(game, game->tex_info.south);
 	game->textures[EAST] = xpm_to_img(game, game->tex_info.east);
 	game->textures[WEST] = xpm_to_img(game, game->tex_info.west);

@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 22:14:04 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/26 19:35:13 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 21:36:25 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,12 @@ void	init_clean_img(t_img_data *img)
 	img->endian = 0;
 }
 
+////czy to moge podpiac do t_game?
+// static void	init_point(t_point *point)
+// {
+
+// }
+
 static void	init_map_info(t_map_info *map_info)
 {
 	map_info->fd = 0;
@@ -122,8 +128,9 @@ static void	init_player(t_player *player)
 	player->dir = '\0';
 }
 
-void	init_data(t_game *game)
+void	data_init(char *map_path, t_game *game)
 {
+	(void)map_path;
 	game->mlx_connection = NULL;
 	game->mlx_window = NULL; 
 	init_clean_img(&game->img_data);

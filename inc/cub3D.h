@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:09:27 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/26 19:16:48 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:11:59 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct	s_player
 typedef struct	s_img_data
 {
 	void	*img;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -134,19 +134,19 @@ typedef struct s_tex_info
 	int				y;
 }	t_tex_info;
 
-struct s_game
+typedef struct s_game
 {
 	void		*mlx_connection;
 	void		*mlx_window;
-	t_img_data	*img_data;
-	t_player	*player;
+	t_img_data	img_data;
+	t_player	player;
 	char		**map_buffer;
 	int			**textures;
 	int			**texture_pxl;
 	t_tex_info	tex_info;
 	t_map_info	map_info;
 	char		**map;
-};
+}	t_game;
 
 // Filling a pixel with color
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
