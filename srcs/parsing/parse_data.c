@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:26:03 by pjedrycz          #+#    #+#             */
-/*   Updated: 2025/05/07 22:32:06 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:56:34 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	parse_data(char *path, t_game *game)
 	col = 0;
 	game->map_info.line_count = get_lns_num(path);
 	game->map_info.path = path;
-	game->map_info.file = ft_calloc(game->map_info.line_count + 1,
-			sizeof(char *));
+	game->map_info.file = ft_calloc(game->map_info.line_count \
+			+ 1, sizeof(char *));
 	if (!(game->map_info.file))
 	{
 		err_msg(NULL, ERR_MALLOC, 0);
