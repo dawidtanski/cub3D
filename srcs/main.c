@@ -6,7 +6,7 @@
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/27 23:00:05 by pjedrycz         ###   ########.fr       */
+/*   Updated: 2025/05/27 23:08:47 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	parse_args(t_game *game, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	t_game	*game;
+	t_game	game;
 
 	printf("%d\n",argc);
 	if (argc != 2 /* || ft_strcmp(argv[1], ".cub")*/)
@@ -72,19 +72,19 @@ int	main(int argc, char *argv[])
 		perror("Wrong arguments number");
 		exit(EXIT_FAILURE);
 	}
-	game = malloc(sizeof(t_game));
-	if (!game)
-		err_exit("Failed to allocate memory for game");
-	data_init(argv[1], game);
-	if (parse_args(game, argv) != 0)
+	// game = malloc(sizeof(t_game));
+	// if (!game)
+	// 	err_exit("Failed to allocate memory for game");
+	data_init(argv[1], &game);
+	if (parse_args(&game, argv) != 0)
 		return (1);
-	init_textures(game);
+	init_textures(&game);
 	// if (!map_is_valid(game->map_buffer))
 	// {
 	// 	perror("Wrong map");
 	// 	exit(EXIT_FAILURE);
 	// }
-	setup_hooks(game);
-	mlx_loop_hook(game->mlx_connection, game_loop, game);
-	mlx_loop(game->mlx_connection);
+	setup_hooks(&game);
+	mlx_loop_hook(game.mlx_connection, game_loop, &game);
+	mlx_loop(game.mlx_connection);
 }
