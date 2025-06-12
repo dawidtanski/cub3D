@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_alias.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 17:54:50 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 13:51:04 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/06/10 22:00:59 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 #define KEY_ARROW_RIGHT	65363
 
 // Hooking events
-enum {
+enum
+{
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
