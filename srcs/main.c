@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:08:32 by dtanski           #+#    #+#             */
-/*   Updated: 2025/05/01 11:15:10 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/06/12 09:58:07 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,47 +19,64 @@ static int	game_loop(t_game *game)
 	int			i;
 	t_point		*player_coord;
 
-	player_coord = malloc(sizeof(t_point));
-	if (!player_coord)
-		return (1);
-	player_coord->x = game->player->x;
-	player_coord->y = game->player->y;
+	player_coord = safe_malloc(sizeof(t_point));
+	player_coord->x = game->player.x * BLOCK;
+	player_coord->y = game->player.y * BLOCK;
 	fraction = PI / 3 / WIDTH;
-	start_x = game->player->angle - PI / 6;
+	start_x = game->player.angle - PI / 6;
 	i = 0;
 	clear_image(game);
 	draw_square(player_coord, 10, 0x00FF00, game);
-	draw_map(game);
 	while (i < WIDTH)
 	{
-		draw_line(game->player, game, start_x, i);
+		draw_line(&game->player, game, start_x, i);
 		start_x += fraction;
 		i++;
 	}
-	mlx_put_image_to_window(game->mlx_connection, game->mlx_window, game->img_data->img, 0, 0);
+	draw_map(game);
+	mlx_put_image_to_window(game->mlx_connection,
+		game->mlx_window, game->img_data.img, 0, 0);
+	free(player_coord);
+	return (0);
+}
+
+// We're doing few things here:
+// - File verification. 
+// - If the file is ok, we can parse the data to work on them later.
+// - Then we're reading the file and saving data in proper struct.
+// - Map validation.
+// - Textures valisation.
+// - Player initializaition.
+static int	parse_args(t_game *game, char *argv[])
+{
+	if (check_file(argv[1], true) == FAILURE)
+		ft_exit(game, FAILURE);
+	parse_data(argv[1], game);
+	if (get_file_data(game, game->map_info.file) == FAILURE)
+		return (free_data(game));
+	if (chck_map(game, game->map) == FAILURE)
+		return (free_data(game));
+	if (val_textures(game, &game->tex_info) == FAILURE)
+		return (free_data(game));
+	set_player_dir(game);
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_game	*game;
+	t_game	game;
 
-	printf("%d\n",argc);
-	if (argc != 2 /* || ft_strcmp(argv[1], ".cub")*/)
+	if (argc != 2)
 	{
 		perror("Wrong arguments number");
 		exit(EXIT_FAILURE);
 	}
-	game = malloc(sizeof(t_game));
-	if (!game)
-		err_exit("Failed to allocate memory for game");
-	data_init(argv[1], game);
-	// if (!map_is_valid(game->map_buffer))
-	// {
-	// 	perror("Wrong map");
-	// 	exit(EXIT_FAILURE);
-	// }
-	setup_hooks(game);
-	mlx_loop_hook(game->mlx_connection, game_loop, game);
-	mlx_loop(game->mlx_connection);
+	data_init(&game);
+	if (parse_args(&game, argv) != 0)
+		return (1);
+	init_mlx_data(&game);
+	init_textures(&game);
+	setup_hooks(&game);
+	mlx_loop_hook(game.mlx_connection, game_loop, &game);
+	mlx_loop(game.mlx_connection);
 }
