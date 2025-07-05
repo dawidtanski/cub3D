@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:35:09 by dtanski           #+#    #+#             */
-/*   Updated: 2025/04/22 11:34:47 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/06/12 15:29:53 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_dlist
 	struct s_list	*previous;
 }					t_dlist;
 
+void				*safe_malloc(size_t	size);
 char				*ft_strtrim_all(const char *s1, const char *set);
 int					ft_isspace(char c);
 int					ft_strisspace(char *str);
@@ -96,14 +97,15 @@ int					print_pointer(void *ptr);
 void				err_exit(const char *err_message);
 
 // Doubly linked list
-void				ft_dlstadd_after_another(t_dlist *node, t_dlist *node_to_insert);
+void				ft_dlstadd_after_another(t_dlist *node,
+						t_dlist *node_to_insert);
 void				ft_dlstadd_front(t_dlist **list, t_dlist *new);
 void				dlstclear(t_dlist **list, void (*del)(void*));
 void				ft_dlstdel_first(t_dlist **list, void (*del)(void*));
 void				ft_dlstdel_last(t_dlist *lst, void (*del)(void*));
 void				ft_dlstdelone(t_dlist *list, void (*del)(void*));
 t_dlist				*ft_dlstlast(t_dlist *list);
-t_dlist 			*ft_dlstnew(void *data);
+t_dlist				*ft_dlstnew(void *data);
 int					dlstsize(t_dlist *list);
 
 #endif

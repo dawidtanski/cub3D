@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   safe_malloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 13:36:12 by dtanski           #+#    #+#             */
-/*   Updated: 2025/06/12 15:27:30 by pjedrycz         ###   ########.fr       */
+/*   Created: 2025/06/11 17:07:05 by dtanski           #+#    #+#             */
+/*   Updated: 2025/06/12 15:30:19 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*safe_malloc(size_t	size)
 {
-	size_t	i;
+	void	*ret;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	ret = malloc(size);
+	if (ret == NULL)
+		err_exit("Mallocing failed");
+	return (ret);
 }

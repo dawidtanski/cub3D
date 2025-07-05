@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:32:49 by dtanski           #+#    #+#             */
-/*   Updated: 2024/11/22 11:22:56 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/05/28 21:30:42 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 126)
-		return (16384);
+	if (c >= 33 && c < 127)
+		return (1);
 	else
 		return (0);
 }

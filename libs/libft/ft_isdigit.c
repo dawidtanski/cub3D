@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pjedrycz <p.jedryczkowski@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:32:28 by dtanski           #+#    #+#             */
-/*   Updated: 2024/11/22 11:22:48 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/06/02 18:27:31 by pjedrycz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
-		return (2048);
+	if (c > 47 && c < 58)
+		return (1);
 	else
 		return (0);
 }

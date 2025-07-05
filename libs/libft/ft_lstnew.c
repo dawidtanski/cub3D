@@ -6,7 +6,7 @@
 /*   By: dtanski <dtanski@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:33:44 by dtanski           #+#    #+#             */
-/*   Updated: 2024/11/22 11:23:49 by dtanski          ###   ########.fr       */
+/*   Updated: 2025/06/09 11:45:24 by dtanski          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,3 @@ t_list	*ft_lstnew(void *content)
 	lstnew->next = NULL;
 	return (lstnew);
 }
-
-// int main()
-// {
-// 	t_list *new = ft_lstnew("test");
-// 	printf("%s\n", (char *)new->content);
-// 	return (0);
-// }
